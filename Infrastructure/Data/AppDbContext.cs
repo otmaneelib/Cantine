@@ -22,5 +22,11 @@ namespace Infrastructure.Data
             modelBuilder.ApplyConfiguration(new SupplementConfiguration());
             modelBuilder.ApplyConfiguration(new TicketConfiguration());
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 }

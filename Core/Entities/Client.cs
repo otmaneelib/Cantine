@@ -1,13 +1,18 @@
-﻿namespace Core.Entities
+﻿using Core.Enums;
+
+namespace Core.Entities
 {
     public class Client
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Budget { get; set; }
-        public string Type { get; set; } // Interne, Prestataire, VIP, Stagiaire, Visiteur
-
-        // Navigation property for Tickets
+        public ClientType Type { get; set; }
         public ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
+
+        public Client()
+        {
+            Tickets = new List<Ticket>();
+        }
     }
 }

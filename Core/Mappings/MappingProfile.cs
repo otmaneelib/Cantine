@@ -9,20 +9,16 @@ namespace Core.Mappings
         public MappingProfile()
         {
             // Client mappings
-            CreateMap<Client, ClientDTO>();
-            CreateMap<ClientDTO, Client>();
+            CreateMap<Client, ClientDTO>().ReverseMap();
 
             // Meal mappings
-            CreateMap<Meal, MealDTO>();
-            CreateMap<MealDTO, Meal>();
+            CreateMap<Meal, MealDTO>().ReverseMap();
 
             // Supplement mappings
-            CreateMap<Supplement, SupplementDTO>();
-            CreateMap<SupplementDTO, Supplement>();
+            CreateMap<Supplement, SupplementDTO>().ReverseMap();
 
             // Ticket mappings
-            CreateMap<Ticket, TicketDTO>();
-            CreateMap<TicketDTO, Ticket>();
+            CreateMap<Ticket, TicketDTO>().ReverseMap();
         }
     }
 }

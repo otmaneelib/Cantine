@@ -13,5 +13,27 @@
 
         // Navigation property for Tickets (one-to-many)
         public ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
+
+        // Constructor
+        public Meal()
+        {
+            Supplements = new List<Supplement>();
+            Tickets = new List<Ticket>();
+        }
+
+        // Override Equals and GetHashCode if necessary
+        public override bool Equals(object obj)
+        {
+            if (obj is Meal meal)
+            {
+                return Id == meal.Id;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
     }
 }
