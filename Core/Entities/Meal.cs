@@ -9,10 +9,10 @@
         public string Pain { get; set; }
 
         // Navigation property for Supplements (many-to-many)
-        public ICollection<Supplement> Supplements { get; set; } = new List<Supplement>();
+        public virtual ICollection<Supplement> Supplements { get; set; } = new List<Supplement>();
 
         // Navigation property for Tickets (one-to-many)
-        public ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
+        public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 
         // Constructor
         public Meal()

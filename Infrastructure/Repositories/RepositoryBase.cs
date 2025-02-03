@@ -15,7 +15,6 @@ namespace Infrastructure.Repositories
         {
             _context = context;
             _logger = logger;
-            _context.ChangeTracker.LazyLoadingEnabled = true; // Enable lazy loading
         }
 
         public IQueryable<T> GetAll()

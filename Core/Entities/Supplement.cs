@@ -9,7 +9,7 @@ namespace Core.Entities
         public decimal Price { get; set; }
 
         // Navigation property for Meals (many-to-many)
-        public ICollection<Meal> Meals { get; set; } = new List<Meal>();
+        public virtual ICollection<Meal> Meals { get; set; } = new List<Meal>();
 
         // Constructor
         public Supplement()

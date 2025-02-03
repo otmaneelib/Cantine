@@ -11,7 +11,7 @@
         public List<string> Products { get; set; } = new List<string>();
 
         // Navigation property for Client
-        public Client Client { get; set; }
+        public virtual Client Client { get; set; }
 
         // Navigation property for Meal
         public Meal Meal { get; set; }

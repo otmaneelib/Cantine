@@ -8,7 +8,7 @@ namespace Core.Entities
         public string Name { get; set; }
         public decimal Budget { get; set; }
         public ClientType Type { get; set; }
-        public ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
+        public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 
         public Client()
         {

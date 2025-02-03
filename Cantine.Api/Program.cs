@@ -1,13 +1,14 @@
+using Application.Services;
 using Core.Interfaces.Mappings;
 using Core.Interfaces.Repositories;
+using Core.Interfaces.Services;
 using Core.Interfaces.Validation;
 using Core.Mappings;
 using Core.Validations;
+using FluentValidation.AspNetCore;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
-using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,11 +29,19 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Entity Framework Core
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseChangeTrackingProxies(); // Enables change tracking proxies
+    options.UseLazyLoadingProxies();    // Enables lazy loading proxies
+});
+
 
 // Register RepositoryBase and ClientRepository
 builder.Services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
+
+// Register BillingService
+builder.Services.AddScoped<IBillingService, BillingService>();
 
 // Register MapperService
 builder.Services.AddScoped<IMapperService, MapperService>();
