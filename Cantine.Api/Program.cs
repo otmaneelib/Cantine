@@ -1,10 +1,12 @@
 using Application.Services;
+using Core.Dtos;
 using Core.Interfaces.Mappings;
 using Core.Interfaces.Repositories;
 using Core.Interfaces.Services;
 using Core.Interfaces.Validation;
 using Core.Mappings;
 using Core.Validations;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
@@ -48,6 +50,12 @@ builder.Services.AddScoped<IMapperService, MapperService>();
 
 // Custom services
 builder.Services.AddScoped<IValidatorService, ValidatorService>();
+
+// Enregistrement des validateurs
+builder.Services.AddScoped<IValidator<ClientDTO>, ClientDTOValidator>();
+builder.Services.AddScoped<IValidator<MealDTO>, MealDTOValidator>();
+builder.Services.AddScoped<IValidator<CreditRequestDTO>, CreditRequestDTOValidator>();
+builder.Services.AddScoped<IValidator<PayMealRequestDTO>, PayMealRequestDTOValidator>();
 
 var app = builder.Build();
 
